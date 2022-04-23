@@ -1,0 +1,56 @@
+[
+  {
+    "title": "Today",
+    "id": 1,
+    "image": "assets/images/sun.png",
+    "taskAmount": 2
+  },
+  {
+    "title": "Planed",
+    "id": 2,
+    "image": "assets/images/sun.png",
+    "taskAmount": 4
+  },
+  {
+    "title": "Personal",
+    "id": 3,
+    "image": "assets/images/sun.png",
+    "taskAmount": 2
+  },
+  {
+    "title": "Work",
+    "id": 4,
+    "image": "assets/images/sun.png",
+    "taskAmount": 1
+  },
+  {
+    "title": "Shopping",
+    "id": 5,
+    "image": "assets/images/sun.png",
+    "taskAmount": 5
+  },
+  {
+    "title": "Shopping",
+    "id": 5,
+    "image": "assets/images/sun.png",
+    "taskAmount": 5
+  },
+  {
+    "title": "Shopping",
+    "id": 5,
+    "image": "assets/images/sun.png",
+    "taskAmount": 5
+  },
+  {
+    "title": "Shopping",
+    "id": 5,
+    "image": "assets/images/sun.png",
+    "taskAmount": 5
+  },
+  {
+    "title": "Shopping",
+    "id": 5,
+    "image": "assets/images/sun.png",
+    "taskAmount": 5
+  }
+]
