@@ -36,48 +36,53 @@ class _CategoryListWidgetState extends State<CategoryListWidget> {
       child: ListView.builder(
           itemCount: categoryList.length,
           itemBuilder: (_, index) {
-            return Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: Container(
-                padding: EdgeInsets.only(left: 24, top: 8, bottom: 8),
-                child: Row(
-                  children: [
-                    Image.asset(categoryList[index].image.toString(),
-                        width: 50, height: 50),
-                    Container(
-                      margin: EdgeInsets.only(left: 16),
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              categoryList[index].title ?? '',
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 24),
-                            ),
-                            Text(
-                              '${categoryList[index].taskAmount ?? 0} Tasks',
-                              style: TextStyle(color: Colors.grey.shade500),
-                            ),
-                          ]),
-                    ),
-                    Expanded(
-                      child: Column(
-                        children: [
-                          Container(
-                            height: 100,
-                            alignment: Alignment.topRight,
-                            child: IconButton(
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.more_vert,
-                                )),
-                          ),
-                        ],
+            return InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, '/todoList');
+              },
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Container(
+                  padding: EdgeInsets.only(left: 24, top: 8, bottom: 8),
+                  child: Row(
+                    children: [
+                      Image.asset(categoryList[index].image.toString(),
+                          width: 50, height: 50),
+                      Container(
+                        margin: EdgeInsets.only(left: 16),
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                categoryList[index].title ?? '',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 24),
+                              ),
+                              Text(
+                                '${categoryList[index].taskAmount ?? 0} Tasks',
+                                style: TextStyle(color: Colors.grey.shade500),
+                              ),
+                            ]),
                       ),
-                    )
-                  ],
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 100,
+                              alignment: Alignment.topRight,
+                              child: IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    Icons.more_vert,
+                                  )),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             );

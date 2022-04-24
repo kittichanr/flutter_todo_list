@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_list/bloc/todo_bloc.dart';
 import 'package:todo_list/models/custom_popup_menu.dart';
-import 'package:todo_list/models/todo.dart';
 import 'package:todo_list/widgets/todo_list_widget.dart';
 
 class TodoListScreen extends StatefulWidget {
@@ -132,7 +131,9 @@ class _TodoListScreenState extends State<TodoListScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
                             icon: Icon(Icons.arrow_back),
                             iconSize: 32),
                         PopupMenuButton<CustomPopupMenu>(

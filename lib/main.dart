@@ -15,15 +15,20 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'TodoList',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      debugShowCheckedModeBanner: false,
-      home: BlocProvider<TodoBloc>(
-        create: (_) => TodoBloc(),
-        child: TodoListScreen(),
+    return BlocProvider<TodoBloc>(
+      create: (context) => TodoBloc(),
+      child: MaterialApp(
+        title: 'TodoList',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        debugShowCheckedModeBanner: false,
+        initialRoute: '/welcome',
+        routes: {
+          '/welcome': (context) => WelcomeScreen(),
+          '/': (context) => HomeScreen(),
+          '/todoList': (context) => TodoListScreen(),
+        },
       ),
     );
   }
