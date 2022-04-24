@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_list/screens/home_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({Key? key}) : super(key: key);
+  WelcomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +43,14 @@ class WelcomeScreen extends StatelessWidget {
                   gradient: LinearGradient(
                       colors: [Colors.greenAccent, Colors.green])),
               child: ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/');
+                onPressed: () async {
+                  SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+                  prefs.setBool('welcome', true);
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => HomeScreen()));
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.transparent,

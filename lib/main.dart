@@ -4,15 +4,34 @@ import 'package:todo_list/bloc/todo_bloc.dart';
 import 'package:todo_list/screens/home_screen.dart';
 import 'package:todo_list/screens/todo_list_screen.dart';
 import 'package:todo_list/screens/welcome_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatefulWidget {
+  MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool welcome = false;
+
+  @override
+  void initState() {
+    getData();
+  }
+
+  getData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      welcome = prefs.getBool('welcome') ?? false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<TodoBloc>(
@@ -23,10 +42,9 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: '/welcome',
+        initialRoute: '/',
         routes: {
-          '/welcome': (context) => WelcomeScreen(),
-          '/': (context) => HomeScreen(),
+          '/': (context) => welcome ? HomeScreen() : WelcomeScreen(),
           '/todoList': (context) => TodoListScreen(),
         },
       ),
